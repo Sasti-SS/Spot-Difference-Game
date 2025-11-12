@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spot the Difference</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1 id="gameTitle">Spot The Difference</h1>
+    <div class="meta">
+      <div id="score" class="pill">0/0</div>
+      <div id="timer" class="pill">Time: 0s</div>
+      <button id="startBtn" class="btn">Start</button>
+      <button id="resetBtn" class="btn">Reset</button>
+      <button id="settingsBtn" class="btn secondary">Settings</button>
+    </div>
+  </header>
+
+  <main class="game">
+    <div class="board">
+      <img id="image1" class="img" alt="Image 1" />
+      <canvas id="overlay1" class="overlay" aria-hidden="true"></canvas>
+    </div>
+    <div class="board">
+      <img id="image2" class="img" alt="Image 2" />
+      <canvas id="overlay2" class="overlay" aria-hidden="true"></canvas>
+    </div>
+  </main>
+
+  <section class="footer">
+    <div id="status">Press Start to begin!</div>
+  </section>
+
+  <dialog id="imgSettingsDialog" class="imgset-dialog">
+    <form method="dialog" class="imgset-form" id="imgSettingsForm">
+      <h2>Images</h2>
+      <div class="imgset-row">
+        <span>Image 1 URL</span>
+        <input type="url" id="img1Url" placeholder="https://... or data:" />
+      </div>
+      <div class="imgset-row">
+        <span>Upload Image 1</span>
+        <input type="file" id="img1File" accept="image/*" />
+      </div>
+      <div class="imgset-row">
+        <span>Image 2 URL</span>
+        <input type="url" id="img2Url" placeholder="https://... or data:" />
+      </div>
+      <div class="imgset-row">
+        <span>Upload Image 2</span>
+        <input type="file" id="img2File" accept="image/*" />
+      </div>
+      <menu class="imgset-menu">
+        <button value="cancel" class="btn ghost" id="imgSetClose">Close</button>
+        <button id="saveImgSettings" value="default" class="btn">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script>
+    
+    window.DEFAULT_CONFIG = {
+      gameTitle: "Spot the Difference",
+      baseSize: { width: 800, height: 500 },
+      images: {
+        image1:
+"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='800' height='500' fill='%23f0f4f8'/><rect x='50' y='60' width='150' height='100' fill='none' stroke='%233c78d8' stroke-width='6'/><circle cx='340' cy='110' r='40' fill='none' stroke='%233c78d8' stroke-width='6'/><polygon points='500,120 560,60 620,120 560,180' fill='none' stroke='%233c78d8' stroke-width='6'/><rect x='240' y='220' width='60' height='40' fill='none' stroke='%233c78d8' stroke-width='6'/><polygon points='470,300 490,260 510,300' fill='none' stroke='%233c78d8' stroke-width='6'/><line x1='100' y1='320' x2='250' y2='460' stroke='%23dc3c50' stroke-width='6'/><polygon points='620,320 632,346 660,350 640,368 645,396 620,382 595,396 600,368 580,350 608,346' fill='none' stroke='%23dc3c50' stroke-width='6'/></svg>",
+        image2:
+"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='800' height='500' fill='%23f0f4f8'/><rect x='50' y='60' width='150' height='100' fill='none' stroke='%233c78d8' stroke-width='6'/><circle cx='340' cy='110' r='40' fill='none' stroke='%233c78d8' stroke-width='6'/><polygon points='500,120 560,60 620,120 560,180' fill='none' stroke='%233c78d8' stroke-width='6'/><rect x='260' y='240' width='60' height='40' fill='none' stroke='%233c78d8' stroke-width='6'/><polygon points='480,310 500,270 520,310' fill='none' stroke='%233c78d8' stroke-width='6'/><circle cx='680' cy='90' r='20' fill='none' stroke='%23dc3c50' stroke-width='6'/></svg>"
+      },
+     
+      differences: [
+        { x: 645, y: 65,  width: 50,  height: 50 },
+        { x: 235, y: 215, width: 90,  height: 80 },
+        { x: 90,  y: 310, width: 170, height: 160 },
+        { x: 575, y: 315, width: 90,  height: 90 },
+        { x: 425, y: 240, width: 110, height: 90 }
+      ]
+    };
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
